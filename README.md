@@ -7,7 +7,7 @@ Welcome to your new gem! In this directory, you'll find the files you need to be
 Add to your application's Gemfile:
 
 ```ruby
-gem "city-and-state", path: "https://github.com/muneebrana414/city-and-state"
+gem 'city-and-state', '~> 0.1.0'
 ```
 
 Then run:
