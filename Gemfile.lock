@@ -1,15 +1,13 @@
 PATH
   remote: .
   specs:
-    city-and-state (0.1.0)
-      city-state (>= 0.1.5)
+    city-and-state (0.2.0)
+      rubyzip (>= 2.3)
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.3)
-    city-state (1.1.0)
-      rubyzip (>= 2.3)
     date (3.4.1)
     diff-lcs (1.6.2)
     erb (5.0.2)

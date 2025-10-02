@@ -16,7 +16,24 @@ Then run:
 bundle install
 ```
 
-This gem depends on `city-state` for data.
+This gem now ships with vendored data and no longer depends on `city-state`.
+
+### Building data (like city-state)
+
+You can download/update the MaxMind GeoLite2 CSV and rebuild local data files:
+
+```bash
+# Set your MaxMind license key (https://www.maxmind.com/en/geolite2/signup)
+export LICENSE_KEY=YOUR_MAXMIND_LICENSE_KEY
+
+# Or use MAXMIND_LICENSE_KEY
+# export MAXMIND_LICENSE_KEY=YOUR_MAXMIND_LICENSE_KEY
+
+# Run the rake task
+bundle exec rake data:update
+```
+
+This will populate `lib/db/GeoLite2-City-Locations-en.csv`, rebuild `lib/db/countries.yml`, and generate `lib/db/states.<country>` and `lib/db/cities.<country>` files.
 
 ## Usage
 

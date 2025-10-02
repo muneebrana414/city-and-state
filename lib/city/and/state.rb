@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "state/version"
-require "city-state"
+require_relative "state/data"
 
 # The CityState module exposes framework-agnostic helpers to list countries, states
 # and cities using the underlying `city-state` gem (CS module). It provides three
@@ -16,7 +16,7 @@ module CityState
 
   # Public API: return array of country codes or names
   def self.countries
-    CS.countries&.values || []
+    Data.countries&.values || []
   rescue StandardError
     []
   end
@@ -25,7 +25,7 @@ module CityState
   def self.states(country)
     return [] if blank?(country)
 
-    CS.states(country)&.values || []
+    Data.states(country)&.values || []
   rescue StandardError
     []
   end
@@ -54,21 +54,21 @@ module CityState
 
   # --- private helpers (module-private) ---
   def self.fetch_state_cities(country, state)
-    states_hash = CS.states(country)
+    states_hash = Data.states(country)
     state_code = states_hash&.key(state)
     return [] unless state_code
 
-    CS.cities(state_code, country) || []
+    Data.cities(state_code, country) || []
   end
 
   def self.fetch_country_cities(country)
-    cities = CS.cities(country)
+    cities = Data.cities(country)
     return cities if cities&.any?
 
-    states_hash = CS.states(country)
+    states_hash = Data.states(country)
     return [] unless states_hash
 
-    states_hash.keys.flat_map { |state_code| CS.cities(state_code, country) || [] }.uniq
+    states_hash.keys.flat_map { |state_code| Data.cities(state_code, country) || [] }.uniq
   end
 end
 

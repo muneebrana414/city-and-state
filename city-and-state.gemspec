@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["muneebrana414"]
   spec.email = ["muneebrana414@gmail.com"]
 
-  spec.summary = "Simple country, state, and city lookups via city-state (CS)."
-  spec.description = "Provides framework-agnostic helpers to list countries, states, and cities using the city-state gem (CS)."
+  spec.summary = "Simple country, state, and city lookups with vendored data."
+  spec.description = "Provides framework-agnostic helpers to list countries, states, and cities using local data files (no external gem dependency)."
   spec.homepage = "https://github.com/muneebrana414/city-and-state"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.1.0"
@@ -31,9 +31,8 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  # Uncomment to register a new dependency of your gem
-  # Use the city-state gem which provides CS.countries, CS.states, CS.cities
-  spec.add_dependency "city-state", ">= 0.1.5"
+  # No external dependency on city-state; optional runtime dependencies may be added here
+  spec.add_dependency "rubyzip", ">= 2.3"
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
